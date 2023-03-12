@@ -8,6 +8,7 @@ def makePredictions(text):
     model.compile(
         loss="binary_crossentropy", optimizer="adam", metrics=["binary_accuracy"]
     )
+    text = text.lower()
     text = [text]
     text = np.array(text)
     text = text.reshape(1, -1)

@@ -1,6 +1,9 @@
 import PyPDF2
 import spacy
 import re
+import pickle
+import keras
+import numpy as np
 
 pdf_file = open("RISHABH's_RESUME.docx.pdf", 'rb')
 pdf_reader = PyPDF2.PdfReader(pdf_file)
@@ -52,3 +55,25 @@ def all_words(text):
     
 
 
+def makePredictions(text):
+    vocab = pickle.load(open("machine_learning/models/vocab.pkl", "rb"))
+    model = keras.models.load_model("machine_learning/models/model_for_inference")
+    model.compile(
+        loss="binary_crossentropy", optimizer="adam", metrics=["binary_accuracy"]
+    )
+    text = text.lower()
+    text = [text]
+    text = np.array(text)
+    text = text.reshape(1, -1)
+    predictions = model.predict(text)
+    top_3 = np.argsort(predictions[0])[-3:][::-1]
+    return [vocab[i] for i in top_3]
+
+def predict(text):
+    all = all_words(text)
+    skills = []
+    for i in all:
+        skills.append(makePredictions(i))
+    return skills
+
+print(predict(text))

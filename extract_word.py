@@ -1,6 +1,6 @@
 import PyPDF2
 
-pdf_file = open('codefest.pdf', 'rb')
+pdf_file = open('scdc-resume.pdf', 'rb')
 pdf_reader = PyPDF2.PdfReader(pdf_file)
 
 for page_num in range(len(pdf_reader.pages)):

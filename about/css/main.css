@@ -114,7 +114,7 @@ body p{
       rgba(40, 40, 40, 0.7), 
       rgba(40, 40, 40, 0.7)
     ),
-    url(../images/intro-bg.jpg);
+    url(../images/intro-bgs.png);
 	background-size:cover;
 	background-size:100% 100%;
 	position:relative;

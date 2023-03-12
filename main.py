@@ -70,31 +70,31 @@ def prediction_result(top, aplcnt_name, cv_path, personality_values):
 
   
 
-    applicant_data = personality_values
-    personality_valuess = ['agree', 'agree', 'neutral', 'disagree', 'disagree']
-    print("last",applicant_data)
+    # applicant_data = personality_values
+    # personality_valuess = ['agree', 'agree', 'neutral', 'disagree', 'disagree']
+    # print("last",applicant_data)
 
-    def convert_to_int(value):
-        if value.startswith("very strongly disagree"):
-            return 1
-        elif value.startswith("disagree"):
-            return 2
-        elif value.startswith("neutral"):
-            return 3
-        elif value.startswith("agree"):
-            return 4
-        elif value.startswith("very strongly agree"):
-            return 5
-        else:
-            return int(value.split("-")[0])
+    # def convert_to_int(value):
+    #     if value.startswith("very strongly disagree"):
+    #         return 1
+    #     elif value.startswith("disagree"):
+    #         return 2
+    #     elif value.startswith("neutral"):
+    #         return 3
+    #     elif value.startswith("agree"):
+    #         return 4
+    #     elif value.startswith("very strongly agree"):
+    #         return 5
+    #     else:
+    #         return int(value.split("-")[0])
 
-    values = tuple([int(applicant_data[0]), int(applicant_data[1])] + list(map(lambda x: convert_to_int(str(x)), personality_valuess)))
+    # values = tuple([int(applicant_data[0]), int(applicant_data[1])] + list(map(lambda x: convert_to_int(str(x)), personality_valuess)))
 
 
     print("\n############# Converted Values #############\n")
-    print(values)
+    # print(values)
 
-    personality = model.test(values)
+    personality = model.test(personality_values)
     print("\n############# Predicted Personality #############\n")
     print(personality)
     data = ResumeParser(cv_path).get_extracted_data()

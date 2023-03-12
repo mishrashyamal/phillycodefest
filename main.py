@@ -72,6 +72,7 @@ def prediction_result(top, aplcnt_name, cv_path, personality_values):
 
     applicant_data = personality_values
     personality_valuess = ['agree', 'agree', 'neutral', 'disagree', 'disagree']
+    print("last",applicant_data)
 
     def convert_to_int(value):
         if value.startswith("very strongly disagree"):
@@ -214,7 +215,7 @@ def perdict_person():
     submitBtn=Button(top, padx=2, pady=0, text="Submit", bd=0, foreground='white', bg='red', font=(12))
 
         
-# Convert string inputs to integers based on certain conditions
+    # Convert string inputs to integers based on certain conditions
     
 
     # openness_str = openness.get().split("-")[0]
